@@ -22,7 +22,7 @@ Ex 1: [1,2,3,4,5,6,7] . n=7 and d=2.
 
 
 public class Array1{
-    public static void main(String[] args)
+    public static void main(int[] args)
     {
         int[] a = new int[7];
     }
