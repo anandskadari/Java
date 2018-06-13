@@ -1,5 +1,4 @@
 
-import java.lang.*;
 
 /*
 Write a function rotate(ar[], d, n) that rotates arr[] of size n by d elements.
@@ -21,9 +20,11 @@ Ex 1: [1,2,3,4,5,6,7] . n=7 and d=2.
  */
 
 
-public class Array1{
-    public static void main(int[] args)
+public class Arrays1{
+    public static void main(String[] args)
     {
         int[] a = new int[7];
+
+        System.out.println("hello");
     }
 }
