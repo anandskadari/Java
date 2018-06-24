@@ -15,7 +15,9 @@ TC : O(n*d)
 SC : O(1)
 
 Third Approach:
-Ex 1: [1,2,3,4,5,6,7] . n=7 and d=2.
+Ex 1: [1,2,3,4,5,6,7] . n=7 and d=2. here GCD is 1. So it is just jump one by one.
+
+
     [ 3 2 1 4 5 6 7  ] -> [ 3 2 5 4 7 6 1] -> [ 3 4 5 6 7 2 1 ]
  */
 
@@ -23,8 +25,8 @@ Ex 1: [1,2,3,4,5,6,7] . n=7 and d=2.
 public class Arrays1{
     public static void main(String[] args)
     {
-        int[] a = new int[7];
+        int[] a = new int[]{1,2,3,4,5,6,7};
 
-        System.out.println("hello");
+
     }
 }
