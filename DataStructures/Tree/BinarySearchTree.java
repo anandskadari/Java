@@ -1,3 +1,5 @@
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class BinarySearchTree {
     private BinaryTreeNode root;
@@ -10,18 +12,71 @@ public class BinarySearchTree {
         insertRecurr(root,data);
     }
 
-    public void insertRecurr(BinaryTreeNode node, int data)
+    private BinaryTreeNode insertRecurr(BinaryTreeNode node, int data)
     {
         if(node == null)
         {
             node = new BinaryTreeNode(data);
+            System.out.println("creating new node = " + data);
         }
         else
         {
-            if(data > node.data)
-                insertRecurr(node.right,data);
-            else
-                insertRecurr(node.left,data);
+            if(data > node.data) {
+                System.out.println("inserting at right");
+                node.right = insertRecurr(node.right, data);
+            }
+            else {
+                System.out.println("inserting at left");
+                node.left = insertRecurr(node.left, data);
+            }
         }
+
+        return node;
+    }
+
+    public void preOrder(){
+        preOrderRecc(root);
+    }
+
+    private void preOrderRecc(BinaryTreeNode node)
+    {
+        if(node == null)
+            return;
+
+        System.out.println(node.data);
+        preOrderRecc(node.left);
+        preOrderRecc(node.right);
+    }
+
+    public void postOrder(){
+        postorder(root);
+    }
+
+    private void postorder(BinaryTreeNode node)
+    {
+        if(node == null)
+            return;
+
+        postorder(node.left);
+        System.out.println(node.data);
+        postorder(node.right);
+    }
+
+    public void levelOrder()
+    {
+        levelOrder(root);
+    }
+
+    public void levelOrder(BinaryTreeNode node)
+    {
+        if(node == null)
+            return;
+
+        Queue<BinaryTreeNode> queue = new PriorityQueue<>();
+        queue.add(node);
+        queue.add(node.left);
+        queue.add(node.right);
+
+
     }
 }
