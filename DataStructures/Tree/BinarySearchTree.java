@@ -7,12 +7,10 @@ public class BinarySearchTree {
     }
 
     public void insert(int data) {
-        root = insert(root,data);
-
-        System.out.println(root.data);
+        insertRecurr(root,data);
     }
 
-    public BinaryTreeNode insert(BinaryTreeNode node, int data)
+    public void insertRecurr(BinaryTreeNode node, int data)
     {
         if(node == null)
         {
@@ -21,11 +19,9 @@ public class BinarySearchTree {
         else
         {
             if(data > node.data)
-            {
-
-            }
+                insertRecurr(node.right,data);
+            else
+                insertRecurr(node.left,data);
         }
-
-        return node;
     }
 }
