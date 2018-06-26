@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -67,16 +68,23 @@ public class BinarySearchTree {
         levelOrder(root);
     }
 
-    public void levelOrder(BinaryTreeNode node)
+    private void levelOrder(BinaryTreeNode node)
     {
         if(node == null)
             return;
 
-        Queue<BinaryTreeNode> queue = new PriorityQueue<>();
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
         queue.add(node);
-        queue.add(node.left);
-        queue.add(node.right);
+        BinaryTreeNode temp = null;
+        while(!queue.isEmpty()) {
+            temp = queue.poll();
+            if(temp.left != null)
+                queue.add(temp.left);
 
+            if(temp.right != null)
+                queue.add(temp.right);
 
+            System.out.println(temp.data);
+        }
     }
 }

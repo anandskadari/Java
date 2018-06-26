@@ -7,8 +7,11 @@ public class Main {
         bs.insert(2);
         bs.insert(7);
 
+        System.out.println("---Pre Order---");
         bs.preOrder();
-        System.out.println("-----");
+        System.out.println("---Post Order---");
         bs.postOrder();
+        System.out.println(("---Level Order---"));
+        bs.levelOrder();
     }
 }
