@@ -49,18 +49,23 @@ public class BinarySearchTree {
         preOrderRecc(node.right);
     }
 
-    public void postOrder(){
-        postorder(root);
+    public void preOrder(BinaryTreeNode node)  //without using recursion
+    {
+
     }
 
-    private void postorder(BinaryTreeNode node)
+    public void postOrder(){
+        postorderRecc(root);
+    }
+
+    private void postorderRecc(BinaryTreeNode node)
     {
         if(node == null)
             return;
 
-        postorder(node.left);
+        postorderRecc(node.left);
         System.out.println(node.data);
-        postorder(node.right);
+        postorderRecc(node.right);
     }
 
     public void levelOrder()
@@ -87,4 +92,6 @@ public class BinarySearchTree {
             System.out.println(temp.data);
         }
     }
+
+
 }
