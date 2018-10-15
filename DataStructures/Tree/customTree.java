@@ -44,15 +44,15 @@ class MyArray{
 
     private void fillArray(int numofElements, int breadth, int depth){
         int total = 0;
-        for(int i=0;i<breadth;i++){
+        for(int i=0;i<breadth;i++){                 //Initially add breadth num of elements directly.
             strArr[i] = String.valueOf(i+1);
             total++;
         }
         while(total<numofElements){
             int elementsToInsert = 1;
-            int parent = (total/breadth) - 1;
+            int parent = (total/breadth) - 1;       //Getting the parent value index
             String name = strArr[parent];
-            while(elementsToInsert<=breadth){
+            while(elementsToInsert<=breadth){       //insert next breadth num of elements into array
                 strArr[total] = name+"."+String.valueOf(elementsToInsert);
                 elementsToInsert++;
                 total++;
