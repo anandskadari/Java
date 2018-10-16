@@ -10,6 +10,8 @@ elements of A.
     3. [1 2 4 6 5 3] -> [1 2 3 4 6 5]
     4. [1 2 3 4 6 5] -> [1 2 3 4 6 5]
     5. [1 2 3 4 6 5] -> [1 2 3 4 5 6]
+
+    So, Selection Sort is like selecting the smallest element first then insert in 1st place and so on for other indexes.
  */
 
 import java.util.Arrays;
