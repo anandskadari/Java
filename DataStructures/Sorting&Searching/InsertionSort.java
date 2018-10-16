@@ -16,7 +16,7 @@
 
     so one loop(outer) for number of elements and another loop for moving elements to left.
 
-
+    Insertion sort can be imagined as sorting playing cards with all cards in hands.
  */
 
 import java.util.Arrays;
