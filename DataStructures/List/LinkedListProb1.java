@@ -14,11 +14,15 @@ public class LinkedListProb1 {
     {
         MLinkedList<Integer> head = new MLinkedList<>();
         MLinkedList<Integer> list = head;
+
+        //Populating List
         for(int i=1;i<=10;i++)
         {
             list.add(i);
             list=list.next();
         }
+
+        list = null;
 
         int k =5;
         traverseUsingRecursion(head,k);
