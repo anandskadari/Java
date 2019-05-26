@@ -22,12 +22,23 @@ public class LinkedListProb2 {
         //Removing extra null value node added.
         list = null;
 
+        MLinkedList<Integer> reverseList = reverseLinkedList(head);
+        System.out.println(reverseList);
+
     }
 
     //It will reverse the linked list and returns the head.
     public static MLinkedList<Integer> reverseLinkedList(MLinkedList<Integer> list)
     {
-
-        return null;
+        System.out.println("In List = " + list.get());
+        if(list.next == null)
+        {
+            System.out.println("List.next is null for " + list.get());
+            return list.next;
+        }
+        else {
+            list = reverseLinkedList(list.next);
+            return list.next;
+        }
     }
 }
