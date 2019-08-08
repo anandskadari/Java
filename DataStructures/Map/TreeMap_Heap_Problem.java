@@ -54,7 +54,7 @@ public class TreeMap_Heap_Problem {
         memory10.insert("System",100);
         memory10.insert("Cache",82);
 
-        SortedSet<Memory> memorySortedSet = new TreeSet<>(new Comparator<Memory>() {
+        TreeSet<Memory> memorySortedSet = new TreeSet<>(new Comparator<Memory>() {
             @Override
             public int compare(Memory o1, Memory o2) {
                 int res = o2.getBiggestElement().compareTo(o1.getBiggestElement());
@@ -62,20 +62,33 @@ public class TreeMap_Heap_Problem {
             }
         });
 
-        memorySortedSet.add(memory1);
-        memorySortedSet.add(memory2);
-        memorySortedSet.add(memory3);
-        memorySortedSet.add(memory4);
-        memorySortedSet.add(memory5);
-        memorySortedSet.add(memory6);
-        memorySortedSet.add(memory7);
-        memorySortedSet.add(memory8);
-        memorySortedSet.add(memory9);
-        memorySortedSet.add(memory10);
+        insert(memorySortedSet,memory1);
+        insert(memorySortedSet,memory2);
+        insert(memorySortedSet,memory3);
+        insert(memorySortedSet,memory4);
+        insert(memorySortedSet,memory5);
+        insert(memorySortedSet,memory6);
+        insert(memorySortedSet,memory7);
+        insert(memorySortedSet,memory8);
+        insert(memorySortedSet,memory9);
+        insert(memorySortedSet,memory10);
 
         memorySortedSet.forEach((Memory memory)->{
             System.out.println(memory.name);
         });
+    }
+
+    public static void insert(TreeSet<Memory> memorySortedSet, Memory memory)
+    {
+        if(memorySortedSet.size()>=5)
+        {
+            memorySortedSet.add(memory);
+            memorySortedSet.remove(memorySortedSet.last());
+        }
+        else
+        {
+            memorySortedSet.add(memory);
+        }
     }
 
 
@@ -108,4 +121,18 @@ class Memory{
         return value;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Memory memory = (Memory) o;
+        return Objects.equals(name, memory.name);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name, treeMemorySet);
+    }
 }
+

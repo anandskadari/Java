@@ -9,78 +9,50 @@ for ex: 12,16 and 100 in this we can choose only one number because digit 1 is p
  */
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
+
+import static java.lang.Math.max;
 
 public class Arrays2 {
 
-    public static HashMap<Integer,Integer> map = new HashMap<>();
-    public static int index = 0;
-
     public static void main(String[] args){
-        int[] arr = {12,16,87,94,100,56};
+        int[] arr = {12,16,87,100};
 
+       int[] memo = new int[1<<10];
 
+        for (int i = 0; i < 1 << 10; i++) memo[i] = -1;
+
+        int res = 0;
+        for (int i = 0; i < 1 << 10; i++) {
+            res = max(res, dp(i, memo, arr));
+        }
+        System.out.println("Res = " + res);
     }
 
-    public static int maxSum(int[] arr){
-        int maxSum = 0;
-        ArrayList<Integer> sumArr = new ArrayList<>();
 
-        for(int i = 0; i<arr.length; i++)
-        {
-            if(isDigitPresent(arr[i],i))
-            {
-                if(arr[i] > arr[index])
-                {
-                    sumArr
-                }
-            }
-            else
-            {
-                sumArr.add(i);
-            }
+    public static int mask(int n) {
+        int mask = 0;
+        for (int i = 1; n/i>0; i*= 10) {
+            int digit = n/i % 10;
+            mask |= 1 << digit;
         }
-
-        return maxSum;
+        return mask;
     }
 
-    public static boolean isDigitPresent(int num,int ind)
-    {
-        ArrayList<Integer> digits = getDigits(num);
-        boolean isDigitPresent = false;
-
-        for(int i=0;i<digits.size();i++)
-        {
-            if(map.get(digits.get(i)) != null )
-            {
-                isDigitPresent = true;
-                index = map.get(digits.get(i));
-                break;
-            }
+    public static int dp(int set, int memo[], int[] a) {
+        if (set == 0) {
+            return memo[set] = 0;
         }
+        if (memo[set] != -1)
+            return memo[set];
 
-        if(!isDigitPresent)
-        {
-            for(int i=0;i<digits.size();i++)
-            {
-                map.put(digits.get(i),ind);
-            }
+        int res = 0;
+        for (int i=0;i<a.length;i++) {
+            int bitmask = mask(a[i]);
+            if ((set | bitmask) == set)
+                res = max(dp(set ^ mask(a[i]), memo, a) + a[i], res);
         }
-
-        return isDigitPresent;
-    }
-
-    public static ArrayList<Integer> getDigits(int num){
-        ArrayList<Integer> digits = new ArrayList<>();
-
-        while(num>0) {
-            int unitPlace = num % 10;
-            num = num / 10;
-            digits.add(unitPlace);
-        }
-
-        return digits;
+        return memo[set] = res;
     }
 }
 
